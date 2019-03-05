@@ -29,14 +29,14 @@
         border-color: black;
     }
 
-    .card-header{
+    .card-header {
 
         background-color: black;
-        opacity: .75;
-        color:cornsilk;
+        opacity: .85;
+        color: #fff;
     }
 
-  
+
 
     .jumbotron {
 
@@ -48,28 +48,24 @@
         border-style: outset;
         border-color: black;
         text-align: center;
-        color: black;
-        text-shadow: 0 1px 0 #ccc,
-            0 2px 0 #c9c9c9,
-            0 3px 0 #bbb,
-            0 4px 0 #b9b9b9,
-            0 5px 0 #aaa,
-            0 6px 1px rgba(0, 0, 0, .1),
-            0 0 5px rgba(0, 0, 0, .1),
-            0 1px 3px rgba(0, 0, 0, .3),
-            0 3px 5px rgba(0, 0, 0, .2),
-            0 5px 10px rgba(0, 0, 0, .25),
-            0 10px 10px rgba(0, 0, 0, .2),
-            0 20px 20px rgba(0, 0, 0, .15);
-
+        color: #fff;
+        font-weight: bold;
+        text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+            0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1),
+            0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25),
+            0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
     }
 </style>
 
 <body>
     <div class="container">
         <div class="jumbotron jumbotron-fluid">
-            <h1 class="display-4"><b>Last Train to Clarksville</b></h1>
-            <h2>You should meet at the station...</h2>
+            <h1 class="display-4">
+                <div style="background-color: black;"><b>Last Train to Clarksville</b><br>
+                    <h2>You should meet at the station...</h2>
+                </div>
+            </h1>
+            <h2></h2>
         </div>
         <div class="card">
             <div class="card-header"><b>Train Schedule</b></div>
@@ -101,7 +97,7 @@
                         <input type="email" class="form-control" id="chooPlace" placeholder="Train Destination">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">First Train Time (Military Time)</label>
+                        <label for="exampleFormControlInput1">First Train ETA (Military Time)</label>
                         <input type="email" class="form-control" id="chooETA" placeholder="00:00">
                     </div>
                     <div class="form-group">
