@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Arvo:700" rel="stylesheet">
+    <title>ChooChooTime</title>
+
+</head>
+
+<style>
+    body {
+
+        background: url(https://twistedsifter.files.wordpress.com/2013/05/animated-gifs-of-fighting-game-backgrounds-6.gif?w=624&h=382);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: 'Arvo', serif;
+
+    }
+
+    .card {
+
+        border-style: outset;
+        border-color: black;
+    }
+
+    .card-header{
+
+        background-color: black;
+        opacity: .75;
+        color:cornsilk;
+    }
+
+  
+
+    .jumbotron {
+
+        background: url(http://38.media.tumblr.com/753fe26d710a85c11dfcd0bb9f973975/tumblr_neldn4WhxE1rr2r12o1_500.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: darken;
+        margin-top: 2%;
+        border-style: outset;
+        border-color: black;
+        text-align: center;
+        color: black;
+        text-shadow: 0 1px 0 #ccc,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 6px 1px rgba(0, 0, 0, .1),
+            0 0 5px rgba(0, 0, 0, .1),
+            0 1px 3px rgba(0, 0, 0, .3),
+            0 3px 5px rgba(0, 0, 0, .2),
+            0 5px 10px rgba(0, 0, 0, .25),
+            0 10px 10px rgba(0, 0, 0, .2),
+            0 20px 20px rgba(0, 0, 0, .15);
+
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <h1 class="display-4"><b>Last Train to Clarksville</b></h1>
+            <h2>You should meet at the station...</h2>
+        </div>
+        <div class="card">
+            <div class="card-header"><b>Train Schedule</b></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency</th>
+                        <th scope="col">Estimated Arrival Time</th>
+                        <th scope="col">Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody id="addAtrain">
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <div class="card">
+            <div class="card-header"><b>Add Train</b></div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Train Name</label>
+                        <input type="email" class="form-control" id="chooName" placeholder="Train Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Destination</label>
+                        <input type="email" class="form-control" id="chooPlace" placeholder="Train Destination">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">First Train Time (Military Time)</label>
+                        <input type="email" class="form-control" id="chooETA" placeholder="00:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Frequency (min)</label>
+                        <input type="email" class="form-control" id="chooAway" placeholder=":00">
+                    </div>
+                    <button class="btn btn-dark btn-lg btn-block" id="addTrain">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
