@@ -24,9 +24,14 @@ $("#addTrains").on("click", function (event) {
   // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
-  var arrival = moment($("#firstChoo").val().trim(), "HH:mm");
+  var arrival = moment($("#firstChoo").val().trim(), "HH:mm").format("X");
   var freq = $("#chooInterval").val().trim();
 
+  /* ---checking input value ---
+  console.log(trainName);
+  console.log(destination);
+  console.log(arrival);
+  console.log(freq);*/
 
   // ----- var temp object{} for train data
   var newTrain = {
@@ -39,11 +44,11 @@ $("#addTrains").on("click", function (event) {
   // ----- upload to firebase
   chooDb.ref().push(newTrain);
 
-  // Logs everything to console
+  /* Logs everything to console
   console.log(newTrain.name);
   console.log(newTrain.place);
   console.log(newTrain.start);
-  console.log(newTrain.rate);
+  console.log(newTrain.rate);*/
 
 
   // ---- Clear input fields
@@ -65,27 +70,28 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var tStart = childSnapshot.val().start;
   var tRate = childSnapshot.val().rate;
 
-  // Train Info
+   // --- Train Info
   console.log(tName);
   console.log(tPlace);
   console.log(tStart);
   console.log(tRate);
 
   //calculate time away and update!
-  // var tAway = 
+  // var tAway = moment(tStart/tRate).fromNow();
 
   // make de new row & info!
-  var newTrain = $("<tr>").append(
+  var train = $("<tr>").append(
     $("<td>").text(tName),
     $("<td>").text(tPlace),
     $("<td>").text(tStart),
-    $("<td>").text(tRate),
-    $("<td>").text(tAway),
+    $("<td>").text(tRate)
+    //$("<td>").text(tAway),
 
   );
 
+
   // Append the new row to the table
-  $("#newTrains > tbody").append(newTrain);
+  $("#newTrains > tbody").prepend(train);
 
 });
 
