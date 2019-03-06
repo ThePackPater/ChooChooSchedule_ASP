@@ -1,18 +1,29 @@
 
 
-/*------initialize firebase!
+//------initialize firebase!
+var config = {
+  apiKey: "AIzaSyAMHq-cRWXmKK1A2lvxxLGeIVLOQmzHXMc",
+  authDomain: "choochooschedule.firebaseapp.com",
+  databaseURL: "https://choochooschedule.firebaseio.com",
+  projectId: "choochooschedule",
+  storageBucket: "choochooschedule.appspot.com",
+  messagingSenderId: "122401938441"
+};
+firebase.initializeApp(config);
 
+var database = firebase.database();
 
 
 // ------- onClick #addTrains
-$("#add-employee-btn").on("click", function(event) {
+$("#addTrains").on("click", function(event) {
+
   event.preventDefault();
 
 
 // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
-  var arrival = moment($("#firstChoo").val().trim(), "MM/DD/YYYY").format("X");
+  var arrival = moment($("#firstChoo").val().trim(), "HH:HH").format("X");
   var freq = $("#chooInterval").val().trim();
 
 
@@ -24,6 +35,8 @@ var newTrain = {
     rate: freq
   };
 
+  console.log(newTrain);
+
 // ----- upload to firebase
 database.ref().push(newTrain);
 
@@ -32,10 +45,10 @@ $("#chooName").val("");
 $("#chooPlace").val("");
 $("#firstChoo").val("");
 $("#chooInterval").val("");
+
 });
 
-
-// --- Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+// --- Create Firebase event for adding new train to the database 
 database.ref().on("#newTrains", function(childSnapshot) {
     console.log(childSnapshot.val());
 
@@ -51,26 +64,21 @@ database.ref().on("#newTrains", function(childSnapshot) {
   console.log(tStart);
   console.log(tRate);
 
-  // change start time format from military to digital
-  var trainStartdTime = moment.unix(tStart).format("h hh");
-
   //calculate time away and update!
-  // Calculate the time away from next arrival (tAway = currenTtime, tRate, - tStart)
-  var tAway = moment().diff(moment(tStart, "X"), "minutes");
-  console.log(tAway);
+  // var tAway = moment().diff(moment(tStart, "X"), "minutes");  console.log(tAway);
 
- 
   // Create the new row
   var newTrain = $("<tr>").append(
     $("<td>").text(tName),
     $("<td>").text(tPlace),
-    $("<td>").text(tStartdTime),
+    $("<td>").text(tStart),
     $("<td>").text(tRate),
     $("<td>").text(tAway),
-    
+
   );
 
   // Append the new row to the table
   $("#newTrains > tbody").append(newTrain);
+  
 });
 
