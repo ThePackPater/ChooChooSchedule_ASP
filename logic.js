@@ -37,7 +37,7 @@ $("#addTrains").on("click", function (event) {
   };
 
   // ----- upload to firebase
-  database.ref().push(newTrain);
+  chooDb.ref().push(newTrain);
 
   // Logs everything to console
   console.log(newTrain.name);
@@ -55,7 +55,7 @@ $("#addTrains").on("click", function (event) {
 });
 
 // --- Create Firebase event for adding new train to the database 
-chooDb.ref().on("child-added", function (childSnapshot) {
+chooDb.ref().on("child_added", function (childSnapshot) {
 
   console.log(childSnapshot.val());
 
