@@ -11,6 +11,8 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--The Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Arvo:700" rel="stylesheet">
+    <!-- Font Awesomeness -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <title>ChooChooTime</title>
 
@@ -58,8 +60,8 @@
         }
 
         .btn {
-            margin-left: 2%;
-            margin-right: 2%;
+            margin-left: 1%;
+            margin-right: 1%;
         }
 
         #container {
@@ -81,16 +83,16 @@
                 </h1>
             </div>
             <div class="card">
-                <div class="card-header"><b>Train Schedule</b></div>
+                <div class="card-header"><h3><b>Train Schedule</b></h3></div>
                 <div class="card-body" style="overflow-y: scroll; height:200px;">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Train Name</th>
-                                <th scope="col">Destination</th>
-                                <th scope="col">Frequency</th>
-                                <th scope="col">Next Arrival</th>
-                                <th scope="col">ETA</th>
+                                <th scope="col">Train Name <i class=" fas fa-train"></i></th>
+                                <th scope="col">Destination <i class=" fas fa-map-marked-alt"></i></th>
+                                <th scope="col">Frequency <i class=" fas fa-stopwatch"></i></th>
+                                <th scope="col">Next Arrival<i class=" far fa-clock"></i></th>
+                                <th scope="col">ETA <i class=" fas fa-stopwatch"></i></th>
                             </tr>
                         </thead>
                         <tbody id="newTrains"></tbody>
@@ -99,7 +101,7 @@
             </div>
             <br>
             <div class="card">
-                <div class="card-header"><b>Add Train</b></div>
+                <div class="card-header"><h3><b>Add Train</b></h3></div>
                 <div class="card-body">
                     <form>
                         <div class="form-group row">
@@ -127,8 +129,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"><b>NEXT
-                                    ARRIVAL
+                            <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"><b>START
                                     TIME</b></label>
                             <div class="col-sm-9">
                                 <input type="data" class="form-control form-control-sm" id="firstChoo"
@@ -136,7 +137,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <button type="submit" class="btn btn-dark btn-lg btn-block" id="addTrains">Submit</button>
+                            <button type="submit" class="btn btn-dark btn-lg btn-block" id="addTrains">Submit<i class="far fa-check-square"></i></button>
                         </div>
                     </form>
                 </div>

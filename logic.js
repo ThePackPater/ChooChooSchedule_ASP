@@ -1,6 +1,7 @@
 
 
 //------initialize firebase!
+
 var config = {
   apiKey: "AIzaSyAMHq-cRWXmKK1A2lvxxLGeIVLOQmzHXMc",
   authDomain: "choochooschedule.firebaseapp.com",
@@ -12,12 +13,16 @@ var config = {
 
 firebase.initializeApp(config);
 
+// Database var
+
 var chooDb = firebase.database();
 
  //Show Current Time
- $("#currentTime").append(moment().format("hh:mm A"));
 
- // found this on StacKOverflow!
+  $("#currentTime").append(moment().format("hh:mm A"));
+
+ //found this on StacKOverflow!
+
  var datetime = null,
         date = null;
 
@@ -33,12 +38,14 @@ $(document).ready(function(){
 });
 
 // ------- onClick #addTrains
+
 $("#addTrains").on("click", function (event) {
 
   event.preventDefault();
 
-
+   
   // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval
+
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
   var arrival = moment($("#firstChoo").val().trim(), "HH:mm A").format("X");
@@ -46,13 +53,15 @@ $("#addTrains").on("click", function (event) {
 
   
 
-  /* ---checking input value ---
+  //---checking input value ---
+
   console.log(trainName);
   console.log(destination);
   console.log(arrival);
-  console.log(freq);*/
+  console.log(freq);
 
   // ----- var temp object{} for train data
+
   var newTrain = {
     name: trainName,
     place: destination,
@@ -61,6 +70,7 @@ $("#addTrains").on("click", function (event) {
   };
 
   // ----- upload to firebase
+
   chooDb.ref().push(newTrain);
 
   /* Logs everything to console
@@ -69,28 +79,34 @@ $("#addTrains").on("click", function (event) {
   console.log(newTrain.start);
   console.log(newTrain.rate);*/
 
+  // ---- Clear input
 
-  // ---- Clear input fields
   $("#chooName").val("");
   $("#chooPlace").val("");
   $("#firstChoo").val("");
   $("#chooInterval").val("");
 
+
+
+
+ 
 });
 
 // --- Create Firebase event for adding new train to the database 
+
 chooDb.ref().on("child_added", function (childSnapshot) {
 
   //console.log(childSnapshot.val());
 
-  // Store everything into a variable.
+  // Store everything into a var
+
   var tName = childSnapshot.val().name;
   var tPlace = childSnapshot.val().place;
   var tStart = childSnapshot.val().start;
   var tRate = childSnapshot.val().rate;
 
 
-  var cleanStart = moment.unix(tStart).format("hh:mm A");
+ 
 
 
    /* --- Train Info
@@ -102,7 +118,9 @@ chooDb.ref().on("child_added", function (childSnapshot) {
 
   //calculate time away and update!
   var tLeft = moment().diff(moment.unix(tStart), "minutes") % tRate;
-  let tAway = tRate - tLeft;
+  var tAway = tRate - tLeft;
+
+  var cleanStart = moment().add(tAway, "m").format("hh:mm A");
 
   console.log(tLeft);
   console.log(tAway);
