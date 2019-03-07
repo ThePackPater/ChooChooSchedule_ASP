@@ -25,7 +25,7 @@ $("#addTrains").on("click", function (event) {
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
   var arrival = moment($("#firstChoo").val().trim(), "HH:mm").format("X");
-  var freq = $("#chooInterval").val().trim();
+  var freq = moment($("#chooInterval").val().trim(), ":mm").format("X");
 
   /* ---checking input value ---
   console.log(trainName);
@@ -70,11 +70,17 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var tStart = childSnapshot.val().start;
   var tRate = childSnapshot.val().rate;
 
+  var cleanRate = moment.unix(tRate).format("H:mm");
+
+  var cleanStart = moment.unix(tStart).format("HH:mm");
+
+
    // --- Train Info
   console.log(tName);
   console.log(tPlace);
   console.log(tStart);
   console.log(tRate);
+
 
   //calculate time away and update!
   // var tAway = moment(tStart/tRate).fromNow();
@@ -83,8 +89,8 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var train = $("<tr>").append(
     $("<td>").text(tName),
     $("<td>").text(tPlace),
-    $("<td>").text(tStart),
-    $("<td>").text(tRate)
+    $("<td>").text(cleanStart),
+    $("<td>").text(cleanRate)
     //$("<td>").text(tAway),
 
   );
