@@ -14,6 +14,23 @@ firebase.initializeApp(config);
 
 var chooDb = firebase.database();
 
+ //Show Current Time
+ $("#currentTime").append(moment().format("hh:mm A"));
+
+ // found this on StacKOverflow!
+ var datetime = null,
+        date = null;
+
+var update = function () {
+    date = moment(new Date())
+    datetime.html(date.format('h:mm:ss a'));
+};
+
+$(document).ready(function(){
+    datetime = $('#currentTime')
+    update();
+    setInterval(update, 1000);
+});
 
 // ------- onClick #addTrains
 $("#addTrains").on("click", function (event) {
@@ -24,8 +41,10 @@ $("#addTrains").on("click", function (event) {
   // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
-  var arrival = moment($("#firstChoo").val().trim(), "HH:mm").format("X");
+  var arrival = moment($("#firstChoo").val().trim(), "HH:mm A").format("X");
   var freq = $("#chooInterval").val().trim();
+
+  
 
   /* ---checking input value ---
   console.log(trainName);
@@ -71,7 +90,7 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var tRate = childSnapshot.val().rate;
 
 
-  var cleanStart = moment.unix(tStart).format("HH:mm");
+  var cleanStart = moment.unix(tStart).format("hh:mm A");
 
 
    /* --- Train Info
@@ -82,15 +101,19 @@ chooDb.ref().on("child_added", function (childSnapshot) {
 
 
   //calculate time away and update!
-  // var tAway = moment(tStart/tRate).fromNow();
+  var tLeft = moment().diff(moment.unix(tStart), "minutes") % tRate;
+  let tAway = tRate - tLeft;
+
+  console.log(tLeft);
+  console.log(tAway);
 
   // make de new row & info!
   var train = $("<tr>").append(
     $("<td>").text(tName),
     $("<td>").text(tPlace),
+    $("<td>").text(tRate + " min"),
     $("<td>").text(cleanStart),
-    $("<td>").text(tRate + " minutes")
-    //$("<td>").text(tAway),
+    $("<td>").text(tAway  + " min")
 
   );
 

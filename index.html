@@ -75,7 +75,8 @@
             <div class="jumbotron jumbotron">
                 <h1 class="display-4">
                     <div style="background-color: black;"><b>The Last Train to Clarksville</b><br>
-                        <h2>You should meet at the station...</h2>
+                        <h2 >You should meet at the station... The current time is: </h2>
+                        <h2 id="currentTime"></h2>
                     </div>
                 </h1>
             </div>
@@ -87,8 +88,8 @@
                             <tr>
                                 <th scope="col">Train Name</th>
                                 <th scope="col">Destination</th>
-                                <th scope="col">First Arrival</th>
-                                <th scope="col">Round Trip</th>
+                                <th scope="col">Frequency</th>
+                                <th scope="col">Next Arrival</th>
                                 <th scope="col">ETA</th>
                             </tr>
                         </thead>
@@ -118,19 +119,20 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"><b>ARRIVAL
-                                    TIME</b></label>
-                            <div class="col-sm-9">
-                                <input type="data" class="form-control form-control-sm" id="firstChoo"
-                                    placeholder="00:00 (military time)">
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label for="colFormLabelSm"
                                 class="col-sm-3 col-form-label col-form-label-sm"><b>FREQUENCY</b></label>
                             <div class="col-sm-9">
                                 <input type="data" class="form-control form-control-sm" id="chooInterval"
                                     placeholder="00 (minutes)">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabelSm" class="col-sm-3 col-form-label col-form-label-sm"><b>NEXT
+                                    ARRIVAL
+                                    TIME</b></label>
+                            <div class="col-sm-9">
+                                <input type="data" class="form-control form-control-sm" id="firstChoo"
+                                    placeholder="00:00 (military time)">
                             </div>
                         </div>
                         <div class="form-group row">
