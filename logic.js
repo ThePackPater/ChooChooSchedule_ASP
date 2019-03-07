@@ -53,12 +53,12 @@ $("#addTrains").on("click", function (event) {
 
   
 
-  //---checking input value ---
+  /*---checking input value ---
 
   console.log(trainName);
   console.log(destination);
   console.log(arrival);
-  console.log(freq);
+  console.log(freq);*/
 
   // ----- var temp object{} for train data
 
@@ -105,18 +105,14 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var tStart = childSnapshot.val().start;
   var tRate = childSnapshot.val().rate;
 
-
- 
-
-
    /* --- Train Info
   console.log(tName);
   console.log(tPlace);
   console.log(tStart);
   console.log(tRate);*/
 
-
   //calculate time away and update!
+
   var tLeft = moment().diff(moment.unix(tStart), "minutes") % tRate;
   var tAway = tRate - tLeft;
 
