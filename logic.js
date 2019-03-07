@@ -25,7 +25,7 @@ $("#addTrains").on("click", function (event) {
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
   var arrival = moment($("#firstChoo").val().trim(), "HH:mm").format("X");
-  var freq = moment($("#chooInterval").val().trim(), ":mm").format("X");
+  var freq = $("#chooInterval").val().trim();
 
   /* ---checking input value ---
   console.log(trainName);
@@ -62,7 +62,7 @@ $("#addTrains").on("click", function (event) {
 // --- Create Firebase event for adding new train to the database 
 chooDb.ref().on("child_added", function (childSnapshot) {
 
-  console.log(childSnapshot.val());
+  //console.log(childSnapshot.val());
 
   // Store everything into a variable.
   var tName = childSnapshot.val().name;
@@ -70,16 +70,15 @@ chooDb.ref().on("child_added", function (childSnapshot) {
   var tStart = childSnapshot.val().start;
   var tRate = childSnapshot.val().rate;
 
-  var cleanRate = moment.unix(tRate).format("H:mm");
 
   var cleanStart = moment.unix(tStart).format("HH:mm");
 
 
-   // --- Train Info
+   /* --- Train Info
   console.log(tName);
   console.log(tPlace);
   console.log(tStart);
-  console.log(tRate);
+  console.log(tRate);*/
 
 
   //calculate time away and update!
@@ -90,14 +89,13 @@ chooDb.ref().on("child_added", function (childSnapshot) {
     $("<td>").text(tName),
     $("<td>").text(tPlace),
     $("<td>").text(cleanStart),
-    $("<td>").text(cleanRate)
+    $("<td>").text(tRate + " minutes")
     //$("<td>").text(tAway),
 
   );
 
-
-  // Append the new row to the table
-  $("#newTrains > tbody").prepend(train);
+  // insert the new row to the table
+  $("#newTrains").prepend(train);
 
 });
 

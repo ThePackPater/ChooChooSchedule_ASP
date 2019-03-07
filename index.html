@@ -16,28 +16,28 @@
 
     <style>
         body {
-
             background: url(TrainBackground.gif);
             background-repeat: no-repeat;
             background-size: cover;
             font-family: 'Arvo', serif;
+        }
 
+        .table {
+            overflow-y: scroll;
+            height: 200px;
         }
 
         .card {
-
             border-style: outset;
             border-color: black;
         }
 
         .card-header {
-
             background-color: black;
             color: #fff;
         }
 
         .jumbotron {
-
             background: url(interior.gif);
             background-repeat: no-repeat;
             background-size: cover;
@@ -50,38 +50,48 @@
             color: white;
             font-weight: bold;
         }
+
+        .col-10 {
+            display: inline-block;
+        }
+
+        #container {
+            text-align: center;
+        }
     </style>
 
 </head>
 
 <body>
-    <div class="container">
-        <div class="jumbotron jumbotron-fluid">
-            <h1 class="display-4">
-                <div style="background-color: black;"><b>The Last Train to Clarksville</b><br>
-                    <h2>You should meet at the station...</h2>
+    <div id="container">
+        <div class="col-10">
+            <div class="jumbotron jumbotron">
+                <h1 class="display-4">
+                    <div style="background-color: black;"><b>The Last Train to Clarksville</b><br>
+                        <h2>You should meet at the station...</h2>
+                    </div>
+                </h1>
+            </div>
+            <div class="card">
+                <div class="card-header"><b>Train Schedule</b></div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Train Name</th>
+                                <th scope="col">Destination</th>
+                                <th scope="col">First Arrival</th>
+                                <th scope="col">Round Trip</th>
+                                <th scope="col">ETA</th>
+                            </tr>
+                        </thead>
+                        <tbody id="newTrains"></tbody>
+                    </table>
                 </div>
-            </h1>
-        </div>
-        <div class="card"  style="overflow-y: scroll; height:300px;">
-            <div class="card-header"><b>Train Schedule</b></div>
-            <table class="table" id="newTrains">
-                <thead>
-                    <tr>
-                        <th scope="col">Train Name</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Estimated Time of Arrival</th>
-                        <th scope="col">Frequency</th>
-                        <th scope="col">Minutes Away</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <br>
-        <div class="card">
-            <div class="card-header"><b>Add Train</b></div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header"><b>Add Train</b></div>
                 <div class="card-body">
                     <form style="overflow-y: scroll; height:300px;">
                         <div class="form-group">
@@ -93,7 +103,7 @@
                             <input type="data" class="form-control" id="chooPlace" placeholder="Train Destination">
                         </div>
                         <div class="form-group">
-                            <label for="Time">First Train ETA (Military Time)</label>
+                            <label for="Time">First Train (Military Time)</label>
                             <input type="data" class="form-control" id="firstChoo" placeholder="00:00">
                         </div>
                         <div class="form-group">
