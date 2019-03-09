@@ -44,7 +44,7 @@ $("#addTrains").on("click", function (event) {
   event.preventDefault();
 
    
-  // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval
+  // --- var(s) to grab data #chooName #chooPlace #firstChoo #chooInterval (still don't quite get the unix)
 
   var trainName = $("#chooName").val().trim();
   var destination = $("#chooPlace").val().trim();
@@ -85,10 +85,6 @@ $("#addTrains").on("click", function (event) {
   $("#chooPlace").val("");
   $("#firstChoo").val("");
   $("#chooInterval").val("");
-
-
-
-
  
 });
 
@@ -118,8 +114,8 @@ chooDb.ref().on("child_added", function (childSnapshot) {
 
   var cleanStart = moment().add(tAway, "m").format("hh:mm A");
 
-  console.log(tLeft);
-  console.log(tAway);
+  //console.log(tLeft);
+  //console.log(tAway);
 
   // make de new row & info!
   var train = $("<tr>").append(
